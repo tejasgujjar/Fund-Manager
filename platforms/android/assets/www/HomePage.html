@@ -1,0 +1,408 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login Page</title>
+	<link rel="stylesheet" href="css/themes/newtheme.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="css/themes/jquery.mobile.structure-1.4.5.min.css" />
+	<link href="css/jquery.mobile-1.4.4.css" rel="stylesheet" type="text/css" media="screen"/>
+	<link href="css/styles.css" rel="stylesheet" type="text/css" media="screen"/>
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.4.js"></script>
+	<script type="text/javascript" src="js/jquery.blockUI_2.66.js"></script>
+	
+	<!-- For date and time picker -->
+	<script type="text/javascript" src="js/mobiscroll.custom-2.4.5.min.js"></script>
+	<script type="text/javascript" src="js/mobiscroll.core-2.4.5-fr.js"></script>
+	<script type="text/javascript" src="js/mobiscroll.datetime-2.4.5-fr.js"></script>
+	
+	<script type="text/javascript" src="js/popup_functions.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/homePage.js"></script>
+	
+	<link href="css/mobiscroll.custom-2.4.5.min.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+	<div id="HomePage" data-role="page" data-theme="d">
+		<div class="header" data-role="header" data-position="inline">
+			<button onclick="showHomePage()" data-role="button" data-icon="home" data-iconpos="notext" data-theme="a" data-inline="true" class="ui-link ui-btn ui-btn-a ui-icon-home ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all" role="button">My button</button>
+			<h1 id="header_text">HOME</h1>
+			<button onclick="logout()" data-role="button" data-icon="home" data-iconpos="notext" data-theme="a" data-inline="true" class="ui-link ui-btn ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all fltRight" role="button"></button>
+		</div>
+		<div data-role="content">
+			<div id="company_div">
+				<span style="color: darkgray;"><h3>Please either select company or create new company to proceed.</h3></span>
+				<select id="selectCompany">
+					<option>Select Company</option>
+					<option>Company_1</option>
+					<option>Company_2</option>
+				</select>
+					<div><button id="createCompanyBtn" class="ui-btn ui-corner-all ui-shadow ui-icon-star ui-btn-icon-left ui-btn-d">Create New Company</button></div>
+			</div>
+			<div id="home_div" class="displaynone">
+				<div class="home-sections" id="category">
+					<img class="category-unselect" />
+					<span class="home_section_text">Category</span>
+				</div>
+				<div class="home-sections" id="ledger">
+					<img class="ledger-unselect" />
+					<span class="home_section_text">Ledger</span>
+				</div>
+				<div class="home-sections" id="cash">
+					<img class="cash-unselect" />
+					<span class="home_section_text">Cash Entry</span>
+				</div>
+				<div class="home-sections" id="report">
+					<img class="report-unselect" />
+					<span class="home_section_text">Report</span>
+				</div>
+			</div>
+			<div id="category_div" class="displaynone">
+				<div id="create_category">
+					<input type="text" placeholder="Enter Category Name" >
+					<div style="width:45%; display: inline-block;float: left;"><button class="ui-btn ui-corner-all ui-shadow ui-icon-recycle ui-btn-icon-left ui-btn-d" >Reset</button></div>
+					<div style="width:45%; display: inline-block;float: right;"><button id="createCategory_saveBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-check ui-btn-icon-left ui-btn-d">Save</button></div>
+				</div>
+				<div style="width:100% !important;" id="list_category" class="displaynone">
+				<input type="search" id="" value="" placeholder="Search Category" data-mini="true">
+					<ul style="list-style: none;">
+						<li class="category_list_header">
+							<div class="list_row" style="width: 10%">No</div>
+							<div class="list_row" style="width: 88%">Category</div>
+						</li>
+					</ul>
+					<ul id="category_list_content" style="list-style: none;">
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">1</div>
+							<div class="list_row" style="width: 88%">Category_1</div>
+						</li>
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">2</div>
+							<div class="list_row" style="width: 88%">Category_2</div>
+						</li>
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">3</div>
+							<div class="list_row" style="width: 88%">Category_3</div>
+						</li>
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">4</div>
+							<div class="list_row" style="width: 88%">Category_4</div>
+						</li>
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">5</div>
+							<div class="list_row" style="width: 88%">Category_5</div>
+						</li>
+						<li class="category_list">
+							<div class="list_row" style="width: 10%">6</div>
+							<div class="list_row" style="width: 88%">Category_6</div>
+						</li>
+					</ul>
+				</div>
+				<div id="categoryFooter" class="Section_footer">
+					<div id="create_category_footer" class="footer-button footer-select">Create</div>
+					<div id="list_category_footer" class="footer-button footer-unselect">List</div>
+				</div>
+			</div>
+			<div id="ledger_div" class="displaynone">
+				<div id="create_ledger">
+					<select>
+						<option>Select Category</option>
+						<option>Category_1</option>
+						<option>Category_2</option>
+						<option>Category_3</option>
+						<option>Category_4</option>
+						<option>Category_5</option>
+						<option>Category_6</option>
+					</select>
+					<input type="text" placeholder="New Ledger Name" >
+					<div style="width:45%; display: inline-block;float: left;"><button class="ui-btn ui-corner-all ui-shadow ui-icon-recycle ui-btn-icon-left ui-btn-d" >Reset</button></div>
+					<div style="width:45%; display: inline-block;float: right;"><button id="createLedger_saveBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-check ui-btn-icon-left ui-btn-d">Save</button></div>
+				</div>
+				<div id="list_ledger" class="displaynone">
+				<input type="search" id="" value="" placeholder="Search Ledger" data-mini="true">
+					<ul style="list-style: none;">
+						<li class="ledger_list_header">
+							<div class="list_row" style="width: 6%">No</div>
+							<div class="list_row" style="width: 40%">Ledger</div>
+							<div class="list_row" style="width: 46%">Category</div>
+						</li>
+					</ul>
+					<ul id="ledger_list_content" style="list-style: none;">
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">1</div>
+							<div class="list_row" style="width: 40%">Ledger_1</div>
+							<div class="list_row" style="width: 46%">Category_2</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">2</div>
+							<div class="list_row" style="width: 40%">Ledger_2</div>
+							<div class="list_row" style="width: 46%">Category_2</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">3</div>
+							<div class="list_row" style="width: 40%">Ledger_3</div>
+							<div class="list_row" style="width: 46%">Category_1</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">4</div>
+							<div class="list_row" style="width: 40%">Ledger_4</div>
+							<div class="list_row" style="width: 46%">Category_3</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">5</div>
+							<div class="list_row" style="width: 40%">Ledger_5</div>
+							<div class="list_row" style="width: 46%">Category_2</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">6</div>
+							<div class="list_row" style="width: 40%">Ledger_6</div>
+							<div class="list_row" style="width: 46%">Category_5</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">7</div>
+							<div class="list_row" style="width: 40%">Ledger_7</div>
+							<div class="list_row" style="width: 46%">Category_6</div>
+						</li>
+					</ul>
+				</div>
+				<div id="ledgerFooter" class="Section_footer">
+					<div id="create_ledger_footer" class="footer-button footer-select">Create</div>
+					<div id="list_ledger_footer" class="footer-button footer-unselect">List</div>
+				</div>
+			</div>
+			
+			<div id="cash_div" class="displaynone">
+				<div id="cash_entry">
+					<input type="text" readonly="readonly" placeholder="Select date" id="cash_date">
+					<select>
+						<option>Select Category</option>
+						<option>Category_1</option>
+						<option>Category_2</option>
+						<option>Category_3</option>
+						<option>Category_4</option>
+						<option>Category_5</option>
+						<option>Category_6</option>
+					</select>
+					<select>
+						<option>Select Ledger</option>
+						<option>Ledger_1</option>
+						<option>Ledger_2</option>
+						<option>Ledger_3</option>
+						<option>Ledger_4</option>
+						<option>Ledger_5</option>
+						<option>Ledger_6</option>
+						<option>Ledger_7</option>
+					</select>
+					<input type="text" placeholder="Amount in Rs" >
+					<div style="display: inline-block !important; width: 100%;">
+						<div class="creditDebit-txt"">Select Mode :</div>
+						<div id="credit" class="radioImg-div"><img class="radio-unselect"></div>
+						<div class="creditDebit-txt"">Credit</div>
+						<div id="debit"  class="radioImg-div"><img class="radio-select"></div>
+						<div class="creditDebit-txt">Debit</div>
+					</div>
+					<input type="text" placeholder="Narration" >
+					<div style="width:45%; display: inline-block;float: left;"><button class="ui-btn ui-corner-all ui-shadow ui-icon-recycle ui-btn-icon-left ui-btn-d" >Reset</button></div>
+					<div style="width:45%; display: inline-block;float: right;"><button id="cash_saveBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-check ui-btn-icon-left ui-btn-d">Save</button></div>
+					<div><button id="cash_editBtn" class="ui-btn ui-corner-all ui-shadow ui-icon-edit ui-btn-icon-left ui-btn-d">Edit</button></div>
+				</div>
+				<div id="cash_edit" class="displaynone">
+					<input type="text" readonly="readonly" placeholder="Select From date" id="cashEdit_from_date">
+					<input type="text" readonly="readonly" placeholder="Select To date" id="cashEdit_to_date">
+					<select>
+						<option>Select Category</option>
+						<option>Category_1</option>
+						<option>Category_2</option>
+						<option>Category_3</option>
+						<option>Category_4</option>
+						<option>Category_5</option>
+						<option>Category_6</option>
+					</select>
+					<select>
+						<option>Select Ledger</option>
+						<option>Ledger_1</option>
+						<option>Ledger_2</option>
+						<option>Ledger_3</option>
+						<option>Ledger_4</option>
+						<option>Ledger_5</option>
+						<option>Ledger_6</option>
+						<option>Ledger_7</option>
+					</select>
+					<div style="width:45%; display: inline-block;float: left;"><button id="cash_edit_backBtn" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left ui-btn-d" >Back</button></div>
+					<div style="width:45%; display: inline-block;float: right;"><button id="cash_showResultsBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-bullets ui-btn-icon-left ui-btn-d">Show Result</button></div>
+				</div>
+				<div id="cash_showResult" class="displaynone">
+				<input type="search" id="" value="" placeholder="Search Ledger" data-mini="true">
+					<ul style="list-style: none;">
+						<li class="showResultCash_list_header">
+							<div class="list_row" style="width: 6%">No</div>
+							<div class="list_row" style="width: 25%">Ledger</div>
+							<div class="list_row" style="width: 25%">Category</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+					</ul>
+					<ul id="showResultCash_list_content" style="list-style: none;">
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">1</div>
+							<div class="list_row" style="width: 25%">Ledger_1</div>
+							<div class="list_row" style="width: 25%">Category_2</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">2</div>
+							<div class="list_row" style="width: 25%">Ledger_2</div>
+							<div class="list_row" style="width: 25%">Category_2</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">3</div>
+							<div class="list_row" style="width: 25%">Ledger_3</div>
+							<div class="list_row" style="width: 25%">Category_1</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">4</div>
+							<div class="list_row" style="width: 25%">Ledger_4</div>
+							<div class="list_row" style="width: 25%">Category_3</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+						<li class="ledger_list">
+							<div class="list_row" style="width: 6%">5</div>
+							<div class="list_row" style="width: 25%">Ledger_5</div>
+							<div class="list_row" style="width: 25%">Category_2</div>
+							<div class="list_row" style="width: 35%">Narration</div>
+						</li>
+					</ul>
+					<div style="width:45%; display: inline-block;float: left;"><button id="cash_showResult_backBtn" class="ui-btn ui-corner-all ui-shadow ui-icon-arrow-l ui-btn-icon-left ui-btn-d" >Back</button></div>
+				</div>
+			</div>
+			
+			<div id="report_div" class="displaynone">
+			<input type="search" id="" value="" placeholder="Search by Narration" data-mini="true">
+				<div id="select_report">
+					<input type="text" placeholder="Select Ledger Name" >
+					<input type="text" readonly="readonly" placeholder="From date" id="from_date">
+					<input type="text" readonly="readonly" placeholder="To date" id="to_date">
+					<div style="margin-left:auto;margin-right:auto; width:55%;"><button id="showReportBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-check ui-btn-icon-left ui-btn-d">Show Report</button></div>
+				</div>
+				<div id="detail_report" class="displaynone">
+					<ul style="list-style: none;">
+						<li class="report_list_header">
+							<div class="list_row" style="width: 5%">No</div>
+							<div class="list_row" style="width: 25%">Date</div>
+							<div class="list_row" style="width: 30%">Narration</div>
+							<div class="list_row" style="width: 23%">Type</div>
+						</li>
+					</ul>
+					<ul id="report_list_content" style="list-style: none;">
+						<li class="report_list">
+							<div class="list_row" style="width: 5%">1</div>
+							<div class="list_row" style="width: 25%">Date</div>
+							<div class="list_row" style="width: 30%">Narration</div>
+							<div class="list_row" style="width: 23%">credit</div>
+						</li>
+						<li class="report_list">
+							<div class="list_row" style="width: 5%">2</div>
+							<div class="list_row" style="width: 25%">Date</div>
+							<div class="list_row" style="width: 30%">Narration</div>
+							<div class="list_row" style="width: 23%">debit</div>
+						</li>
+						<li class="report_list">
+							<div class="list_row" style="width: 5%">3</div>
+							<div class="list_row" style="width: 25%">Date</div>
+							<div class="list_row" style="width: 30%">Narration</div>
+							<div class="list_row" style="width: 23%">debit</div>
+						</li>
+						<li class="report_list">
+							<div class="list_row" style="width: 5%">4</div>
+							<div class="list_row" style="width: 25%">Date</div>
+							<div class="list_row" style="width: 30%">Narration</div>
+							<div class="list_row" style="width: 23%">credit</div>
+						</li>
+					</ul>
+					<div style="width:100%; display: inline-block; position: fixed;bottom: 1px;border: 1px solid blue;background-color:gray;">
+						<div style="width:45%;display: inline-block;float: left;"><button id="backToSelReportBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-arrow-l ui-btn-icon-left ui-btn-d">Back</button></div>
+						<div style="width:45%; display: inline-block;float: right;"><button id="showTotalBtn" class="ui-btn ui-corner-all ui-shadow  ui-icon-check ui-btn-icon-left ui-btn-d">Show Total</button></div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!-- Common error popup dialog -->
+				<a href="#commonPopup_popup" data-rel="popup" id="common_popup_link" class="displaynone"></a>
+                <div id="commonPopup-screen"></div>
+                <div id="commonPopup-popup">
+                    <div data-role="popup" class="loginErr-page common-popup" id="commonPopup_popup" data-overlay-theme = "a" data-position-to="window">
+                        <div id="popup_main">
+                            <div id="popup_head" class="head-txt purple-txt"></div>
+                            <div class="medium-txt gray-txt">
+                                <div id="popup_text"></div>
+                                <div id="popup_buttons"></div>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                <div data-role="popup" id="category_list_dialog" data-overlay-theme="a" data-theme="d" data-dismissible="true" style="max-width:1000px;width: 105%; ">
+	   				<div data-role="header" data-theme="d">
+	    				<h1>Edit Category</h1>
+	    			</div>
+	    			<div role="main" class="ui-content">
+						<input type="text" readonly="readonly" value="Products">
+						<input type="text" placeholder="Category Name">  
+				        <a id="" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back"  >Reset</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Delete</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Update</a>
+	    			</div>
+				</div>
+				<div data-role="popup" id="ledger_list_dialog" data-overlay-theme="a" data-theme="d" data-dismissible="true" style="max-width:1000px;width: 105%; ">
+	   				<div data-role="header" data-theme="d">
+	    				<h1>Edit Ledger</h1>
+	    			</div>
+	    			<div role="main" class="ui-content">
+						<input type="text" readonly="readonly" value="Ledger Name">
+						<input type="text" placeholder="Category Name">  
+						<input type="text" placeholder="Ledger Name"> 
+				        <a id="" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back"  >Reset</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Delete</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Update</a>
+	    			</div>
+				</div>
+				<div data-role="popup" id="showTotal_report_dialog" data-overlay-theme="a" data-theme="d" data-dismissible="true" style="max-width:1000px;">
+	   				<div data-role="header" data-theme="d">
+	    				<h1 style="width:50%;">Brief Report</h1>
+	    			</div>
+	    			<div role="main" class="ui-content">
+						<label for="TotCredit">Total Credit in Rs.</label> <input id="TotCredit" type="text" readonly="readonly" placeholder="Total Credit" value="3210"> 
+						<label for="TotDebit">Total Debit in Rs.</label> <input id="TotDebit" type="text" readonly="readonly" placeholder="Total Debit" value="1258">  
+						<label for="closingBal">Closing Balance in Rs.</label> <input id="closingBal" type="text" readonly="readonly" placeholder="Closing Balance" value="">    
+						
+				        <div class="ui-content" style="width:100% !important">
+				      	  <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back" data-transition="flow">OK</a>
+				        </div> 
+	    			</div>
+				</div>
+				<div data-role="popup" id="showResults_cash_dialog" data-overlay-theme="a" data-theme="d" data-dismissible="true" style="max-width:1000px;width: 105%;">
+	   				<div data-role="header" data-theme="d">
+	    				<h1 style="width:50%;">Edit Entry</h1>
+	    			</div>
+	    			<div role="main" class="ui-content">
+						<label for="TotCredit">Narration :</label> <input type="text" placeholder="Enter Narration" value="House expenses"> 
+						<label for="TotDebit">Amount in Rs.</label> <input type="text" placeholder="Amount" value="1258">  
+				        <a id="" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back" >Reset</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Delete</a>
+				        <a id="" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Update</a>
+	    			</div>
+				</div>
+				<div data-role="popup" id="create_company_dialog" data-overlay-theme="a" data-theme="d" data-dismissible="true" style="max-width:1000px;">
+	   				<div data-role="header" data-theme="d">
+	    				<h1 style="position: absolute;left:-20px;">Create Company</h1>
+	    			</div>
+	    			<div role="main" class="ui-content">
+						<label for="">New company Name :</label> <input type="text" placeholder="Enter Company Name" value=""> 
+				        <a id="" href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a" data-rel="back" >Cancel</a>
+				        <button id="createCompany_popUpBtn" href="#"  class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-a fltRight" data-rel="back" data-transition="flow">Create</button>
+	    			</div>
+				</div>
+                <!-- <div data-role="footer" data-position="inline" ></div>  -->
+	</div>
+</body>
+</html>
